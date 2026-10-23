@@ -1,0 +1,20 @@
+// Copyright 2026, compose-miuix-ui contributors
+// SPDX-License-Identifier: Apache-2.0
+
+// Vendored into Listenly from compose-miuix-ui/miuix v0.9.4 (example/shared), Apache-2.0.
+// Modifications: package renamed; see git history for further changes.
+package cn.listenly.app.ui.glass
+
+// Adapted from Kyant0/AndroidLiquidGlass — https://github.com/Kyant0/AndroidLiquidGlass (Apache 2.0).
+
+import top.yukonga.miuix.kmp.blur.BackdropEffectScope
+import top.yukonga.miuix.kmp.blur.colorControls
+
+/** Lightweight stand-in for Kyant's `vibrancy()`. */
+fun BackdropEffectScope.vibrancy() {
+    colorControls(
+        brightness = 0f,
+        contrast = 1f,
+        saturation = 1.5f,
+    )
+}

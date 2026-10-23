@@ -1,0 +1,21 @@
+services:
+  listenly:
+    build: .
+    image: listenly-server:latest
+    container_name: listenly-server
+    restart: unless-stopped
+    ports:
+      # 只在本机监听；对外请用 Caddy/Nginx 反向代理提供 HTTPS。
+      # 如需直接对外开放（不推荐），改成 "8080:8080"。
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - listenly-data:/data
+    environment:
+      LISTENLY_ALLOW_REGISTRATION: "true"
+      # 经过反向代理时设为 "true"，限流才能拿到真实客户端 IP。
+      LISTENLY_TRUST_PROXY: "false"
+      LISTENLY_LOG_LEVEL: "info"
+      # LISTENLY_JWT_SECRET: "至少 32 字节的随机字符串；不设置则自动生成到 /data/jwt.secret"
+
+volumes:
+  listenly-data:
